@@ -7,6 +7,7 @@ import ImageWithLoader from './ImageWithLoader'
 const MIN_SCALE = 1
 const MAX_SCALE = 3
 const ZOOM_STEP = 0.6
+const SWIPE_THRESHOLD = 40
 
 type LightboxImage = {
   src: string
@@ -26,6 +27,7 @@ export default function Lightbox({ images, index, onClose, onIndexChange }: Ligh
   const [scale, setScale] = useState(MIN_SCALE)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const dragState = useRef<{ startX: number; startY: number; originX: number; originY: number } | null>(null)
+  const swipeState = useRef<{ startX: number; startY: number } | null>(null)
   const pointers = useRef(new Map<number, { x: number; y: number }>())
   const pinchState = useRef<{ startDist: number; startScale: number } | null>(null)
   const previewSrcRef = useRef<string | undefined>(undefined)
@@ -66,11 +68,17 @@ export default function Lightbox({ images, index, onClose, onIndexChange }: Ligh
 
     if (pointers.current.size === 2) {
       dragState.current = null
+      swipeState.current = null
       pinchState.current = { startDist: pinchDistance(), startScale: scale }
       return
     }
-    if (scale === MIN_SCALE) return
-    dragState.current = { startX: event.clientX, startY: event.clientY, originX: offset.x, originY: offset.y }
+    if (scale > MIN_SCALE) {
+      dragState.current = { startX: event.clientX, startY: event.clientY, originX: offset.x, originY: offset.y }
+      return
+    }
+    if (hasMultiple) {
+      swipeState.current = { startX: event.clientX, startY: event.clientY }
+    }
   }
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLImageElement>) => {
@@ -90,7 +98,18 @@ export default function Lightbox({ images, index, onClose, onIndexChange }: Ligh
   const stopDragging = (event: ReactPointerEvent<HTMLImageElement>) => {
     pointers.current.delete(event.pointerId)
     if (pointers.current.size < 2) pinchState.current = null
+
+    if (swipeState.current) {
+      const dx = event.clientX - swipeState.current.startX
+      const dy = event.clientY - swipeState.current.startY
+      if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) goNext()
+        else goPrev()
+      }
+    }
+
     dragState.current = null
+    swipeState.current = null
   }
 
   useEffect(() => {
