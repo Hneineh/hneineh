@@ -25,6 +25,8 @@ export default function Lightbox({ images, index, onClose, onIndexChange }: Ligh
   const [scale, setScale] = useState(MIN_SCALE)
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const dragState = useRef<{ startX: number; startY: number; originX: number; originY: number } | null>(null)
+  const pointers = useRef(new Map<number, { x: number; y: number }>())
+  const pinchState = useRef<{ startDist: number; startScale: number } | null>(null)
   const { src, alt } = images[index]
   const hasMultiple = images.length > 1
 
@@ -51,19 +53,41 @@ export default function Lightbox({ images, index, onClose, onIndexChange }: Ligh
     setZoom(scale - event.deltaY * 0.0015)
   }
 
+  const pinchDistance = () => {
+    const [a, b] = [...pointers.current.values()]
+    return Math.hypot(a.x - b.x, a.y - b.y)
+  }
+
   const handlePointerDown = (event: ReactPointerEvent<HTMLImageElement>) => {
+    event.currentTarget.setPointerCapture(event.pointerId)
+    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
+
+    if (pointers.current.size === 2) {
+      dragState.current = null
+      pinchState.current = { startDist: pinchDistance(), startScale: scale }
+      return
+    }
     if (scale === MIN_SCALE) return
     dragState.current = { startX: event.clientX, startY: event.clientY, originX: offset.x, originY: offset.y }
-    event.currentTarget.setPointerCapture(event.pointerId)
   }
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLImageElement>) => {
+    if (!pointers.current.has(event.pointerId)) return
+    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
+
+    if (pointers.current.size === 2 && pinchState.current) {
+      const { startDist, startScale } = pinchState.current
+      setZoom(startScale * (pinchDistance() / startDist))
+      return
+    }
     if (!dragState.current) return
     const { startX, startY, originX, originY } = dragState.current
     setOffset({ x: originX + (event.clientX - startX), y: originY + (event.clientY - startY) })
   }
 
-  const stopDragging = () => {
+  const stopDragging = (event: ReactPointerEvent<HTMLImageElement>) => {
+    pointers.current.delete(event.pointerId)
+    if (pointers.current.size < 2) pinchState.current = null
     dragState.current = null
   }
 
