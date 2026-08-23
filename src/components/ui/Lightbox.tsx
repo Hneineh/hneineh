@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, ty
 import { createPortal } from 'react-dom'
 import { usePick } from '../../i18n/languageContext'
 import { lightboxText } from '../../content/gallery'
+import ImageWithLoader from './ImageWithLoader'
 
 const MIN_SCALE = 1
 const MAX_SCALE = 3
@@ -27,6 +28,7 @@ export default function Lightbox({ images, index, onClose, onIndexChange }: Ligh
   const dragState = useRef<{ startX: number; startY: number; originX: number; originY: number } | null>(null)
   const pointers = useRef(new Map<number, { x: number; y: number }>())
   const pinchState = useRef<{ startDist: number; startScale: number } | null>(null)
+  const previewSrcRef = useRef<string | undefined>(undefined)
   const { src, alt } = images[index]
   const hasMultiple = images.length > 1
 
@@ -153,12 +155,16 @@ export default function Lightbox({ images, index, onClose, onIndexChange }: Ligh
 
       <div
         key={index}
-        className="animate-popup-in relative flex max-h-[85vh] max-w-4xl items-center justify-center overflow-hidden"
+        className="animate-popup-in relative flex min-h-[45vh] min-w-[70vw] max-h-[85vh] max-w-4xl items-center justify-center overflow-hidden sm:min-w-[50vw]"
         onWheel={handleWheel}
       >
-        <img
+        <ImageWithLoader
           src={src}
           alt={alt}
+          previewSrc={previewSrcRef.current}
+          onLoad={() => {
+            previewSrcRef.current = src
+          }}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={stopDragging}
