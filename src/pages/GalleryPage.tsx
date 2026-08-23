@@ -16,7 +16,7 @@ export default function GalleryPage({ galleryId }: GalleryPageProps) {
   const images = usePick(galleryPlaceholderImages)[galleryId]
   const pageText = usePick(galleryPageText)
   const link = links.find((item) => item.id === galleryId)
-  const [activeImage, setActiveImage] = useState<{ src: string; alt: string } | null>(null)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   return (
     <main className="min-h-screen bg-greige px-6 py-16 text-ink">
@@ -50,7 +50,7 @@ export default function GalleryPage({ galleryId }: GalleryPageProps) {
             <Reveal key={image.id} delayMs={(i % 3) * 80}>
               <button
                 type="button"
-                onClick={() => setActiveImage({ src: image.imageSrc, alt: image.label })}
+                onClick={() => setActiveIndex(i)}
                 className="block w-full cursor-zoom-in overflow-hidden rounded-lg transition hover:-translate-y-1 hover:shadow-lg"
               >
                 <ImageWithLoader
@@ -64,8 +64,13 @@ export default function GalleryPage({ galleryId }: GalleryPageProps) {
         </section>
       </div>
 
-      {activeImage && (
-        <Lightbox src={activeImage.src} alt={activeImage.alt} onClose={() => setActiveImage(null)} />
+      {activeIndex !== null && (
+        <Lightbox
+          images={images.map((image) => ({ src: image.imageSrc, alt: image.label }))}
+          index={activeIndex}
+          onIndexChange={setActiveIndex}
+          onClose={() => setActiveIndex(null)}
+        />
       )}
     </main>
   )

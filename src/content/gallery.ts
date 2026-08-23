@@ -15,9 +15,27 @@ export const galleryLinkCta: Localized<{ viewMore: string }> = {
   en: { viewMore: 'View More' },
 }
 
-export const lightboxText: Localized<{ closeLabel: string; zoomInLabel: string; zoomOutLabel: string }> = {
-  ar: { closeLabel: 'إغلاق', zoomInLabel: 'تكبير', zoomOutLabel: 'تصغير' },
-  en: { closeLabel: 'Close', zoomInLabel: 'Zoom in', zoomOutLabel: 'Zoom out' },
+export const lightboxText: Localized<{
+  closeLabel: string
+  zoomInLabel: string
+  zoomOutLabel: string
+  prevLabel: string
+  nextLabel: string
+}> = {
+  ar: {
+    closeLabel: 'إغلاق',
+    zoomInLabel: 'تكبير',
+    zoomOutLabel: 'تصغير',
+    prevLabel: 'الصورة السابقة',
+    nextLabel: 'الصورة التالية',
+  },
+  en: {
+    closeLabel: 'Close',
+    zoomInLabel: 'Zoom in',
+    zoomOutLabel: 'Zoom out',
+    prevLabel: 'Previous image',
+    nextLabel: 'Next image',
+  },
 }
 
 export const galleryLinks: Localized<GalleryLink[]> = {
