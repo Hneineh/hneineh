@@ -1,0 +1,36 @@
+import type { Localized, ServiceItem } from './types'
+
+export const services: Localized<ServiceItem[]> = {
+  ar: [
+    { id: 'kitchens', name: 'المطابخ' },
+    { id: 'bedrooms', name: 'غرف النوم' },
+    { id: 'living-rooms', name: 'الصالونات' },
+    { id: 'home-furniture', name: 'الأثاث المنزلي' },
+    { id: 'outdoor-furniture', name: 'الأثاث الخارجي' },
+    { id: 'wooden-doors', name: 'الأبواب الخشبية' },
+    { id: 'wooden-bars', name: 'البارات الخشبية' },
+    { id: 'office-furniture', name: 'المكاتب' },
+    { id: 'commercial-fitout', name: 'تجهيز المطاعم والمقاهي والمحلات بجميع الأعمال الخشبية' },
+    { id: 'home-decor', name: 'ديكور المنازل' },
+    { id: 'outdoor-decor', name: 'الديكورات الخارجية' },
+    { id: 'wooden-decor', name: 'الديكورات الخشبية' },
+    { id: 'student-projects', name: 'مشاريع الطلاب' },
+    { id: 'custom-furniture', name: 'الأثاث حسب الطلب' },
+  ],
+  en: [
+    { id: 'kitchens', name: 'Kitchens' },
+    { id: 'bedrooms', name: 'Bedrooms' },
+    { id: 'living-rooms', name: 'Living Rooms' },
+    { id: 'home-furniture', name: 'Home Furniture' },
+    { id: 'outdoor-furniture', name: 'Outdoor Furniture' },
+    { id: 'wooden-doors', name: 'Wooden Doors' },
+    { id: 'wooden-bars', name: 'Wooden Bars' },
+    { id: 'office-furniture', name: 'Office Furniture' },
+    { id: 'commercial-fitout', name: 'Restaurant, café & shop fit-outs — all woodwork' },
+    { id: 'home-decor', name: 'Home Decor' },
+    { id: 'outdoor-decor', name: 'Outdoor Decor' },
+    { id: 'wooden-decor', name: 'Wooden Decor' },
+    { id: 'student-projects', name: 'Student Projects' },
+    { id: 'custom-furniture', name: 'Custom Furniture' },
+  ],
+}

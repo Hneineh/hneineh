@@ -1,0 +1,7 @@
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+public/frames/**/*.webp filter=lfs diff=lfs merge=lfs -text
+public/frames/**/*.png filter=lfs diff=lfs merge=lfs -text
