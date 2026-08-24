@@ -65,7 +65,7 @@ export const contactSection: Localized<{
     submitLabel: 'Send',
     submittingLabel: 'Sending...',
     successMessage: 'Your message has been sent successfully We’ll be in touch soon',
-    errorMessage: 'Something went wrong while sending. Please try again or reach us directly at',
+    errorMessage: 'Something went wrong while sending Please try again or reach us directly at',
   },
 }
 
