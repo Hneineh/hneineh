@@ -26,7 +26,7 @@ export const services: Localized<ServiceItem[]> = {
     { id: 'wooden-doors', name: 'Wooden Doors' },
     { id: 'wooden-bars', name: 'Wooden Bars' },
     { id: 'office-furniture', name: 'Office Furniture' },
-    { id: 'commercial-fitout', name: 'Restaurant, café & shop fit-outs — all woodwork' },
+    { id: 'commercial-fitout', name: 'Restaurant, café & shop fit-outs (all woodwork)' },
     { id: 'home-decor', name: 'Home Decor' },
     { id: 'outdoor-decor', name: 'Outdoor Decor' },
     { id: 'wooden-decor', name: 'Wooden Decor' },

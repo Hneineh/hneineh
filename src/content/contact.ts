@@ -33,7 +33,7 @@ export const contactPopup: Localized<{
   },
   en: {
     title: 'Get in Touch',
-    subtitle: "We're here — reach out directly, whichever way suits you.",
+    subtitle: "We're here: reach out directly, whichever way suits you.",
     emailLabel: 'Email',
     phoneLabel: 'Phone',
     closeLabel: 'Close',
@@ -64,7 +64,7 @@ export const contactSection: Localized<{
     emailSubject: 'New contact request from the Hneineh website',
     submitLabel: 'Send',
     submittingLabel: 'Sending...',
-    successMessage: 'Your message has been sent successfully — we’ll be in touch soon.',
+    successMessage: 'Your message has been sent successfully. We’ll be in touch soon.',
     errorMessage: 'Something went wrong while sending. Please try again or reach us directly at',
   },
 }

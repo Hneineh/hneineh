@@ -65,7 +65,7 @@ export const faqItems: Localized<FaqItem[]> = {
       id: 'delivery-lebanon',
       question: 'Do you deliver across all of Lebanon?',
       answer:
-        'Absolutely. We deliver to every region in Lebanon, and we handle delivery and installation at no extra cost — because the experience matters to us, from the first idea to the final detail.',
+        'Absolutely. We deliver to every region in Lebanon, and we handle delivery and installation at no extra cost, because the experience matters to us, from the first idea to the final detail.',
     },
     {
       id: 'post-delivery',

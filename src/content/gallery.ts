@@ -63,7 +63,7 @@ export const galleryLinks: Localized<GalleryLink[]> = {
     {
       id: 'carpentry',
       title: 'Our Carpentry',
-      description: 'Take a look at our carpentry — every piece handcrafted with real attention to detail.',
+      description: 'Take a look at our carpentry, every piece handcrafted with real attention to detail.',
       pageDescription: 'Exceptional Craftsmanship, Shaped by Over 50 Years of Expertise.',
       href: '/gallery/carpentry',
       imageAlt: 'Photo of carpentry work',
@@ -72,7 +72,7 @@ export const galleryLinks: Localized<GalleryLink[]> = {
     {
       id: 'design',
       title: 'Our Design',
-      description: 'Step into our interior design projects — where ideas become reality.',
+      description: 'Step into our interior design projects, where ideas become reality.',
       pageDescription: 'Where dreams and ideas take shape through the expertise of our designers.',
       href: '/gallery/design',
       imageAlt: 'Photo of design work',

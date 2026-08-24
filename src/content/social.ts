@@ -7,6 +7,6 @@ export const socialSection: Localized<{ title: string; subtitle: string }> = {
   },
   en: {
     title: 'Follow Us',
-    subtitle: 'Behind-the-scenes from the workshop, our newest projects, and every detail — first on our pages.',
+    subtitle: 'Behind-the-scenes from the workshop, our newest projects, and every detail, first on our pages.',
   },
 }

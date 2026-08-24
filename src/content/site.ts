@@ -33,7 +33,7 @@ export const siteText: Localized<{
   },
   en: {
     name: 'Hneineh',
-    tagline: 'Interiors & Carpentry — Since 1980',
+    tagline: 'Interiors & Carpentry, Since 1980',
     email: 'info@hneineh.com',
     logoAlt: 'Hneineh carpentry & design logo',
   },
