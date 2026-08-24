@@ -52,7 +52,7 @@ export const contactSection: Localized<{
   ar: {
     title: 'خبرنا شو في ببالك',
     subtitle: '',
-    emailSubject: 'طلب تواصل جديد من موقع حنينة',
+    emailSubject: 'طلب تواصل جديد من موقع حنينه',
     submitLabel: 'إرسال',
     submittingLabel: 'جاري الإرسال...',
     successMessage: 'تم إرسال رسالتك بنجاح، رح نتواصل معك قريبًا.',
@@ -74,8 +74,8 @@ export const contactFields: Localized<ContactFormField[]> = {
     {
       id: 'name',
       name: 'name',
-      label: 'الاسم الكريم',
-      placeholder: 'الاسم الكريم',
+      label: 'الاسم',
+      placeholder: 'الاسم',
       type: 'text',
       required: true,
     },

@@ -43,8 +43,8 @@ export const galleryLinks: Localized<GalleryLink[]> = {
     {
       id: 'carpentry',
       title: 'نجارتنا',
-      description: 'حرفة مميزة، بأيادِ عمرها اكثر من خمسين سنة .',
-      pageDescription: 'حرفة مميزة، بأيادِ عمرها اكثر من خمسين سنة.',
+      description: 'حرفة مميزة، بأيادي عمرها اكثر من خمسين سنة .',
+      pageDescription: 'حرفة مميزة، بأيادي عمرها اكثر من خمسين سنة.',
       href: '/gallery/carpentry',
       imageAlt: 'صورة من أعمال النجارة',
       imageSrc: '/process_images/hneineh-Our-Carpentry-1920x1080.webp',

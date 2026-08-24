@@ -1,7 +1,7 @@
 import type { FaqItem, Localized } from './types'
 
 export const faqSection: Localized<{ title: string }> = {
-  ar: { title: 'كل يلي بدك تعرفه' },
+  ar: { title: 'كل يلي بدّك تعرفه' },
   en: { title: 'FAQ' },
 }
 

@@ -26,10 +26,10 @@ export const siteText: Localized<{
   logoAlt: string
 }> = {
   ar: {
-    name: 'حنينة',
+    name: 'حنينه',
     tagline: 'تصميم ونجارة — منذ ١٩٨٠',
     email: 'info@hneineh.com',
-    logoAlt: 'شعار حنينة للنجارة والتصميم',
+    logoAlt: 'شعار حنينه للنجارة والتصميم',
   },
   en: {
     name: 'Hneineh',
