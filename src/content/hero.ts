@@ -18,7 +18,7 @@ export const heroFramesMobile = {
 
 export const heroText: Localized<{ headline: string; scrollHint: string }> = {
   ar: {
-    headline: 'البيت يلي متخيّلو... صار وقتو يصير حقيقة',
+    headline: 'البيت يلي متخيّلو، صار وقتو يصير حقيقة',
     scrollHint: 'اسحب لتحت واكتشف شو مخبّاية الرحلة',
   },
   en: {
