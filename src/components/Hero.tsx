@@ -46,26 +46,48 @@ export default function Hero() {
         frames={frames}
         placeholderFrameCount={heroFrames.count}
         overlay={
-          <div className="relative h-full text-center">
-            <Reveal className="absolute inset-x-0 top-[140px] px-6">
-              <h1 className="font-display mx-auto max-w-3xl text-3xl leading-snug text-greige drop-shadow-md sm:text-5xl">
-                {text.headline}
-              </h1>
-            </Reveal>
+          isMobile ? (
+            <div className="relative h-full text-center">
+              <Reveal className="absolute inset-x-0 top-[140px] px-6">
+                <h1 className="font-display mx-auto max-w-3xl text-3xl leading-snug text-greige drop-shadow-md">
+                  {text.headline}
+                </h1>
+              </Reveal>
 
-            <div className="absolute inset-x-0 top-[60%] flex flex-col items-center gap-6 px-6 text-center">
+              <div className="absolute inset-x-0 top-[60%] flex flex-col items-center gap-6 px-6 text-center">
+                <Reveal delayMs={150}>
+                  <dl className="flex w-full max-w-3xl flex-col items-center gap-y-6">
+                    <div className="flex justify-center gap-x-4">
+                      {stats.slice(0, 3).map((stat) => (
+                        <Stat key={stat.id} stat={stat} shouldStart={appReady} />
+                      ))}
+                    </div>
+                    <div className="flex justify-center gap-x-4">
+                      {stats.slice(3).map((stat) => (
+                        <Stat key={stat.id} stat={stat} shouldStart={appReady} />
+                      ))}
+                    </div>
+                  </dl>
+                </Reveal>
+
+                <Reveal delayMs={300}>
+                  <p className="font-body text-sm text-greige drop-shadow">{text.scrollHint}</p>
+                </Reveal>
+              </div>
+            </div>
+          ) : (
+            <div className="flex h-full flex-col items-center justify-center gap-10 px-6 text-center">
+              <Reveal>
+                <h1 className="font-display max-w-3xl text-3xl leading-snug text-greige drop-shadow-md sm:text-5xl">
+                  {text.headline}
+                </h1>
+              </Reveal>
+
               <Reveal delayMs={150}>
-                <dl className="flex w-full max-w-3xl flex-col items-center gap-y-6 sm:grid sm:grid-cols-5 sm:gap-x-4">
-                  <div className="flex justify-center gap-x-4 sm:contents">
-                    {stats.slice(0, 3).map((stat) => (
-                      <Stat key={stat.id} stat={stat} shouldStart={appReady} />
-                    ))}
-                  </div>
-                  <div className="flex justify-center gap-x-4 sm:contents">
-                    {stats.slice(3).map((stat) => (
-                      <Stat key={stat.id} stat={stat} shouldStart={appReady} />
-                    ))}
-                  </div>
+                <dl className="grid w-full max-w-3xl grid-cols-5 gap-x-4">
+                  {stats.map((stat) => (
+                    <Stat key={stat.id} stat={stat} shouldStart={appReady} />
+                  ))}
                 </dl>
               </Reveal>
 
@@ -73,7 +95,7 @@ export default function Hero() {
                 <p className="font-body text-sm text-greige drop-shadow">{text.scrollHint}</p>
               </Reveal>
             </div>
-          </div>
+          )
         }
       />
     </section>
