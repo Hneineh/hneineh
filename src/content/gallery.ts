@@ -43,8 +43,8 @@ export const galleryLinks: Localized<GalleryLink[]> = {
     {
       id: 'carpentry',
       title: 'نجارتنا',
-      description: 'حرفة مميزة، بأيادي عمرها اكثر من خمسين سنة .',
-      pageDescription: 'حرفة مميزة، بأيادي عمرها اكثر من خمسين سنة.',
+      description: 'حرفة مميزة، بأيادي عمرها اكثر من خمسين سنة',
+      pageDescription: 'حرفة مميزة، بأيادي عمرها اكثر من خمسين سنة',
       href: '/gallery/carpentry',
       imageAlt: 'صورة من أعمال النجارة',
       imageSrc: '/process_images/hneineh-Our-Carpentry-1920x1080.webp',
@@ -52,8 +52,8 @@ export const galleryLinks: Localized<GalleryLink[]> = {
     {
       id: 'design',
       title: 'مهندسينا',
-      description: 'الاحلام والافكار ، بخبرة مهندسنا بتصير واقع.',
-      pageDescription: 'الاحلام والافكار، بخبرة مهندسنا بتصير واقع.',
+      description: 'الاحلام والافكار ، بخبرة مهندسنا بتصير واقع',
+      pageDescription: 'الاحلام والافكار، بخبرة مهندسنا بتصير واقع',
       href: '/gallery/design',
       imageAlt: 'صورة من أعمال التصميم',
       imageSrc: '/process_images/hneineh-Our-Engineers-1920x1080.webp',
@@ -63,8 +63,8 @@ export const galleryLinks: Localized<GalleryLink[]> = {
     {
       id: 'carpentry',
       title: 'Our Carpentry',
-      description: 'Take a look at our carpentry, every piece handcrafted with real attention to detail.',
-      pageDescription: 'Exceptional Craftsmanship, Shaped by Over 50 Years of Expertise.',
+      description: 'Take a look at our carpentry, every piece handcrafted with real attention to detail',
+      pageDescription: 'Exceptional Craftsmanship, Shaped by Over 50 Years of Expertise',
       href: '/gallery/carpentry',
       imageAlt: 'Photo of carpentry work',
       imageSrc: '/process_images/hneineh-Our-Carpentry-1920x1080.webp',
@@ -72,8 +72,8 @@ export const galleryLinks: Localized<GalleryLink[]> = {
     {
       id: 'design',
       title: 'Our Design',
-      description: 'Step into our interior design projects, where ideas become reality.',
-      pageDescription: 'Where dreams and ideas take shape through the expertise of our designers.',
+      description: 'Step into our interior design projects, where ideas become reality',
+      pageDescription: 'Where dreams and ideas take shape through the expertise of our designers',
       href: '/gallery/design',
       imageAlt: 'Photo of design work',
       imageSrc: '/process_images/hneineh-Our-Engineers-1920x1080.webp',

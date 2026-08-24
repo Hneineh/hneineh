@@ -26,7 +26,7 @@ export const contactPopup: Localized<{
 }> = {
   ar: {
     title: 'تواصل معنا',
-    subtitle: 'نحنا هون، تواصل معنا بالطريقة يلي بتريحك.',
+    subtitle: 'نحنا هون، تواصل معنا بالطريقة يلي بتريحك',
     emailLabel: 'البريد الإلكتروني',
     phoneLabel: 'رقم الهاتف',
     closeLabel: 'إغلاق',
@@ -55,7 +55,7 @@ export const contactSection: Localized<{
     emailSubject: 'طلب تواصل جديد من موقع حنينه',
     submitLabel: 'إرسال',
     submittingLabel: 'جاري الإرسال...',
-    successMessage: 'تم إرسال رسالتك بنجاح، رح نتواصل معك قريبًا.',
+    successMessage: 'تم إرسال رسالتك بنجاح، رح نتواصل معك قريبًا',
     errorMessage: 'صار في خطأ أثناء الإرسال، جرّب مرة تانية أو تواصل معنا مباشرة على',
   },
   en: {
@@ -64,7 +64,7 @@ export const contactSection: Localized<{
     emailSubject: 'New contact request from the Hneineh website',
     submitLabel: 'Send',
     submittingLabel: 'Sending...',
-    successMessage: 'Your message has been sent successfully. We’ll be in touch soon.',
+    successMessage: 'Your message has been sent successfully We’ll be in touch soon',
     errorMessage: 'Something went wrong while sending. Please try again or reach us directly at',
   },
 }

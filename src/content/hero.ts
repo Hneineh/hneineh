@@ -22,7 +22,7 @@ export const heroText: Localized<{ headline: string; scrollHint: string }> = {
     scrollHint: 'اسحب لتحت واكتشف شو مخبّاية الرحلة',
   },
   en: {
-    headline: 'The home you’ve always envisioned… now, bring it to life.',
+    headline: 'The home you’ve always envisioned… now, bring it to life',
     scrollHint: 'Keep scrolling to explore the journey we’ll take together',
   },
 }
