@@ -13,18 +13,28 @@ type HeroFrameSequenceProps = {
   overlay?: ReactNode
 }
 
+/** Frames to keep fetching ahead of / behind the one on screen. Forward-
+ *  biased because scroll-scrub almost always moves down through the sequence;
+ *  the small backward margin covers scrolling back up. */
+const WINDOW_AHEAD = 20
+const WINDOW_BEHIND = 10
+/** Cap on concurrent frame downloads. Keeps bandwidth focused on the frames
+ *  about to be shown instead of splitting it across the whole sequence, so
+ *  the ones near the viewport land far sooner on a slow connection. */
+const MAX_CONCURRENT_LOADS = 6
+
 /**
  * Scroll-scrubbed frame-sequence player. Renders a full-viewport sticky
  * canvas inside a tall wrapper; scroll position within that wrapper maps to
  * the current frame. Falls back to a labeled placeholder box when no frames
  * have been supplied yet.
  *
- * Loading is progressive past the first frame: the app-wide pre-launch
- * splash (see lib/preloader.ts) is what actually keeps the page hidden
- * until that first frame is ready, so there's no separate loading state
- * here. Every other frame keeps downloading in the background after that,
- * and the canvas draws the nearest already-loaded frame while the exact
- * one for the current scroll position is still on the way in.
+ * Loading is windowed: the first frame loads immediately, then a moving
+ * window of frames around the current scroll position keeps itself topped
+ * up (see WINDOW_AHEAD / MAX_CONCURRENT_LOADS) as the user scrolls, rather
+ * than queueing all ~120 frames up front. The canvas draws the nearest
+ * already-loaded frame while the exact one for the current scroll position
+ * is still on the way in.
  */
 export default function HeroFrameSequence({
   frames,
@@ -37,6 +47,11 @@ export default function HeroFrameSequence({
   const imagesRef = useRef<HTMLImageElement[]>([])
   const frameCount = frames.length
 
+  // Which frame the scroll position currently maps to, and a handle to the
+  // active loader's "top up the window" function — both read across effects.
+  const currentIndexRef = useRef(0)
+  const pumpRef = useRef<(() => void) | null>(null)
+
   const [loadedCount, setLoadedCount] = useState(0)
   const [isFirstFrameReady, setIsFirstFrameReady] = useState(frameCount === 0)
 
@@ -47,32 +62,73 @@ export default function HeroFrameSequence({
   useEffect(() => {
     if (frameCount === 0) return
     let cancelled = false
+
     const images: HTMLImageElement[] = new Array(frameCount)
     imagesRef.current = images
-
+    const state = new Uint8Array(frameCount) // 0 = idle, 1 = loading, 2 = done
+    let inFlight = 0
     let loaded = 0
-    const onOneLoaded = (index: number) => {
-      loaded += 1
-      if (cancelled) return
-      setLoadedCount(loaded)
-      if (index === 0) setIsFirstFrameReady(true)
-    }
 
-    frames.forEach((src, i) => {
+    const startOne = (i: number) => {
+      if (cancelled || state[i] !== 0) return
+      state[i] = 1
+      inFlight += 1
       const img = new Image()
       img.decoding = 'async'
-      // Only the frame the user sees immediately needs to jump the queue.
-      img.fetchPriority = i === 0 ? 'high' : 'low'
-      img.src = src
-      img.onload = () => onOneLoaded(i)
-      img.onerror = () => onOneLoaded(i)
+      // Only the frame actually on screen needs to jump the network queue.
+      img.fetchPriority = i === currentIndexRef.current ? 'high' : 'low'
+      const finish = () => {
+        inFlight -= 1
+        state[i] = 2
+        loaded += 1
+        if (cancelled) return
+        setLoadedCount(loaded)
+        if (i === 0) setIsFirstFrameReady(true)
+        pump() // a slot freed up — pull in the next frame in the window
+      }
+      img.onload = finish
+      img.onerror = finish
+      img.src = frames[i]
       images[i] = img
-    })
+    }
+
+    // Frames we want in memory right now, ordered nearest-to-viewport first
+    // so the concurrency cap always spends its slots on the most useful ones.
+    const windowedFrames = () => {
+      const c = currentIndexRef.current
+      const wanted = [c, 0] // on-screen frame first, then the poster/first frame
+      for (let d = 1; d <= Math.max(WINDOW_AHEAD, WINDOW_BEHIND); d += 1) {
+        if (d <= WINDOW_AHEAD && c + d < frameCount) wanted.push(c + d)
+        if (d <= WINDOW_BEHIND && c - d >= 0) wanted.push(c - d)
+      }
+      return wanted
+    }
+
+    const pump = () => {
+      if (cancelled) return
+      for (const i of windowedFrames()) {
+        if (inFlight >= MAX_CONCURRENT_LOADS) break
+        if (state[i] === 0) startOne(i)
+      }
+    }
+
+    pumpRef.current = pump
+    pump()
 
     return () => {
       cancelled = true
+      pumpRef.current = null
     }
   }, [frames, frameCount])
+
+  // As the scroll position moves the current frame, slide the load window.
+  useEffect(() => {
+    if (frameCount === 0) return
+    const idx = Math.min(frameCount - 1, Math.round(progress * (frameCount - 1)))
+    if (idx === currentIndexRef.current) return
+    currentIndexRef.current = idx
+    pumpRef.current?.()
+  }, [progress, frameCount])
 
   useEffect(() => {
     if (frameCount === 0) return
