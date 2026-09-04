@@ -48,8 +48,8 @@ export default function Hero() {
 
         <div className="pointer-events-none absolute inset-0">
           {isMobile ? (
-            <div className="relative h-full text-center">
-              <Reveal className="absolute inset-x-0 top-[140px] px-6">
+            <div className="relative h-full pt-[30px] text-center">
+              <Reveal className="absolute inset-x-0 top-[250px] px-6">
                 <h1 className="font-display mx-auto max-w-3xl text-3xl leading-snug text-greige drop-shadow-md">
                   {text.headline}
                 </h1>
