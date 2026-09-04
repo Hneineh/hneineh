@@ -77,9 +77,9 @@ export default function Hero() {
               </div>
             </div>
           ) : (
-            <div className="flex h-full flex-col items-center justify-center gap-10 px-6 text-center">
+            <div className="flex h-full flex-col items-center justify-center gap-25 px-6 text-center">
               <Reveal>
-                <h1 className="font-display max-w-3xl text-3xl leading-snug text-greige drop-shadow-md sm:text-5xl">
+                <h1 className="font-display max-w-4xl text-3xl leading-snug text-greige drop-shadow-md sm:text-5xl">
                   {text.headline}
                 </h1>
               </Reveal>
