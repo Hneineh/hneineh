@@ -1,16 +1,11 @@
 import type { StatItem } from '../content/types'
-import { heroFrames, heroFramesMobile, heroStats, heroText } from '../content/hero'
+import { heroStats, heroText } from '../content/hero'
 import { useAppReady } from '../hooks/useAppReady'
 import { useCountUp } from '../hooks/useCountUp'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { usePick } from '../i18n/languageContext'
-import { buildFrameUrls } from '../lib/frames'
 import Bdi from './ui/Bdi'
 import Reveal from './ui/Reveal'
-import HeroFrameSequence from './HeroFrameSequence'
-
-const desktopFrames = buildFrameUrls(heroFrames)
-const mobileFrames = buildFrameUrls(heroFramesMobile)
 
 function StatValue({ stat, shouldStart }: { stat: StatItem; shouldStart: boolean }) {
   const display = useCountUp(stat.value, shouldStart)
@@ -38,15 +33,21 @@ export default function Hero() {
   const text = usePick(heroText)
   const stats = usePick(heroStats)
   const isMobile = useIsMobile()
-  const frames = isMobile ? mobileFrames : desktopFrames
+  const heroImageSrc = isMobile ? '/hero_images/hero_image_mobile.png' : '/hero_images/hero_image_desktop.jpeg'
 
   return (
     <section id="top" aria-label={text.headline}>
-      <HeroFrameSequence
-        frames={frames}
-        placeholderFrameCount={heroFrames.count}
-        overlay={
-          isMobile ? (
+      <div className="relative h-screen w-full overflow-hidden bg-ink">
+        <img
+          src={heroImageSrc}
+          alt={text.headline}
+          className="h-full w-full object-cover object-center"
+        />
+
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+
+        <div className="pointer-events-none absolute inset-0">
+          {isMobile ? (
             <div className="relative h-full text-center">
               <Reveal className="absolute inset-x-0 top-[140px] px-6">
                 <h1 className="font-display mx-auto max-w-3xl text-3xl leading-snug text-greige drop-shadow-md">
@@ -95,9 +96,9 @@ export default function Hero() {
                 <p className="font-body text-sm text-greige drop-shadow">{text.scrollHint}</p>
               </Reveal>
             </div>
-          )
-        }
-      />
+          )}
+        </div>
+      </div>
     </section>
   )
 }
