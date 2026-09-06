@@ -20,7 +20,7 @@ function Stat({ stat, shouldStart }: { stat: StatItem; shouldStart: boolean }) {
   return (
     <div className="flex w-20 shrink-0 flex-col items-center gap-1 sm:w-auto">
       <dt className="sr-only">{stat.label}</dt>
-      <dd className="font-body text-3xl font-bold text-greige drop-shadow-md sm:text-4xl">
+      <dd className="font-body text-2xl font-bold text-greige drop-shadow-md sm:text-4xl">
         <StatValue stat={stat} shouldStart={shouldStart} />
       </dd>
       <dd className="font-body text-xs text-greige drop-shadow sm:text-sm">{stat.label}</dd>
@@ -50,7 +50,7 @@ export default function Hero() {
           {isMobile ? (
             <div className="flex h-full flex-col items-center justify-end gap-8 px-6 pb-20 text-center">
               <Reveal>
-                <h1 className="font-display mx-auto max-w-3xl text-3xl leading-snug text-greige drop-shadow-md">
+                <h1 className="font-display mx-auto max-w-3xl text-2xl leading-snug text-greige drop-shadow-md">
                   {text.headline}
                 </h1>
               </Reveal>
@@ -71,7 +71,7 @@ export default function Hero() {
               </Reveal>
 
               <Reveal delayMs={300}>
-                <p className="font-body text-sm text-greige drop-shadow">{text.scrollHint}</p>
+                <p className="font-body text-xs text-greige drop-shadow">{text.scrollHint}</p>
               </Reveal>
             </div>
           ) : (
