@@ -48,33 +48,31 @@ export default function Hero() {
 
         <div className="pointer-events-none absolute inset-0">
           {isMobile ? (
-            <div className="relative h-full pt-[30px] text-center">
-              <Reveal className="absolute inset-x-0 top-[400px] px-6">
+            <div className="flex h-full flex-col items-center justify-end gap-8 px-6 pb-20 text-center">
+              <Reveal>
                 <h1 className="font-display mx-auto max-w-3xl text-3xl leading-snug text-greige drop-shadow-md">
                   {text.headline}
                 </h1>
               </Reveal>
 
-              <div className="absolute inset-x-0 top-[60%] flex flex-col items-center gap-0 px-6 text-center">
-                <Reveal delayMs={150}>
-                  <dl className="flex w-full max-w-3xl flex-col items-center gap-y-6">
-                    <div className="flex justify-center gap-x-4">
-                      {stats.slice(0, 3).map((stat) => (
-                        <Stat key={stat.id} stat={stat} shouldStart={appReady} />
-                      ))}
-                    </div>
-                    <div className="flex justify-center gap-x-4">
-                      {stats.slice(3).map((stat) => (
-                        <Stat key={stat.id} stat={stat} shouldStart={appReady} />
-                      ))}
-                    </div>
-                  </dl>
-                </Reveal>
+              <Reveal delayMs={150}>
+                <dl className="flex w-full max-w-3xl flex-col items-center gap-y-6">
+                  <div className="flex justify-center gap-x-4">
+                    {stats.slice(0, 3).map((stat) => (
+                      <Stat key={stat.id} stat={stat} shouldStart={appReady} />
+                    ))}
+                  </div>
+                  <div className="flex justify-center gap-x-4">
+                    {stats.slice(3).map((stat) => (
+                      <Stat key={stat.id} stat={stat} shouldStart={appReady} />
+                    ))}
+                  </div>
+                </dl>
+              </Reveal>
 
-                <Reveal delayMs={300}>
-                  <p className="font-body text-sm text-greige drop-shadow">{text.scrollHint}</p>
-                </Reveal>
-              </div>
+              <Reveal delayMs={300}>
+                <p className="font-body text-sm text-greige drop-shadow">{text.scrollHint}</p>
+              </Reveal>
             </div>
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-25 px-6 text-center">
