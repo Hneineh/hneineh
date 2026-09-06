@@ -3,7 +3,7 @@ import { heroStats, heroText } from '../content/hero'
 import { useAppReady } from '../hooks/useAppReady'
 import { useCountUp } from '../hooks/useCountUp'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { usePick } from '../i18n/languageContext'
+import { useLanguage, usePick } from '../i18n/languageContext'
 import Bdi from './ui/Bdi'
 import Reveal from './ui/Reveal'
 
@@ -32,6 +32,7 @@ export default function Hero() {
   const appReady = useAppReady()
   const text = usePick(heroText)
   const stats = usePick(heroStats)
+  const { lang } = useLanguage()
   const isMobile = useIsMobile()
   const heroImageSrc = isMobile ? '/hero_images/hero_image_mobile.jpg' : '/hero_images/hero_image_desktop.png'
 
@@ -50,7 +51,13 @@ export default function Hero() {
           {isMobile ? (
             <div className="flex h-full flex-col items-center justify-end gap-8 px-6 pb-20 text-center">
               <Reveal>
-                <h1 className="font-display mx-auto max-w-none whitespace-nowrap text-[clamp(1.15rem,5.4vw,1.9rem)] leading-snug text-greige drop-shadow-md">
+                <h1
+                  className={
+                    lang === 'ar'
+                      ? 'font-display mx-auto max-w-none whitespace-nowrap text-[clamp(1.15rem,5.4vw,1.9rem)] leading-snug text-greige drop-shadow-md'
+                      : 'font-display mx-auto max-w-sm text-2xl leading-snug text-greige drop-shadow-md'
+                  }
+                >
                   {text.headline}
                 </h1>
               </Reveal>
