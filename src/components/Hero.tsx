@@ -20,7 +20,7 @@ function Stat({ stat, shouldStart }: { stat: StatItem; shouldStart: boolean }) {
   return (
     <div className="flex w-20 shrink-0 flex-col items-center gap-1 sm:w-auto">
       <dt className="sr-only">{stat.label}</dt>
-      <dd className="font-body text-2xl font-bold text-greige drop-shadow-md sm:text-4xl">
+      <dd className="font-body text-xl font-bold text-greige drop-shadow-md sm:text-4xl">
         <StatValue stat={stat} shouldStart={shouldStart} />
       </dd>
       <dd className="font-body text-xs text-greige drop-shadow sm:text-sm">{stat.label}</dd>
@@ -49,7 +49,7 @@ export default function Hero() {
 
         <div className="pointer-events-none absolute inset-0">
           {isMobile ? (
-            <div className="flex h-full flex-col items-center justify-end gap-8 px-6 pb-20 text-center">
+            <div className="flex h-full flex-col items-center justify-end gap-8 px-6 pb-10 text-center">
               <Reveal>
                 <h1
                   className={
