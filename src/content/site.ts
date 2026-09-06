@@ -41,15 +41,15 @@ export const siteText: Localized<{
 
 export const socialLinks: Localized<SocialLink[]> = {
   ar: [
-    { id: 'facebook', label: 'فيسبوك', url: 'https://www.facebook.com/share/19R2DseXxq/' },
-    { id: 'instagram', label: 'انستغرام', url: 'https://www.instagram.com/hneinehinteriorscarpentry/' },
-    { id: 'tiktok', label: 'تيك توك', url: 'https://www.tiktok.com/@hneinehinteriorcarpentry' },
-    { id: 'pinterest', label: 'بينتيريست', url: 'https://de.pinterest.com/hneinehlb/' },
+    { id: 'facebook', label: 'فيسبوك', url: 'https://www.facebook.com/share/1D51uw7DPR/' },
+    { id: 'instagram', label: 'انستغرام', url: 'https://www.instagram.com/hneinehinteriors' },
+    { id: 'tiktok', label: 'تيك توك', url: 'https://www.tiktok.com/@hneinehinteriors' },
+    { id: 'pinterest', label: 'بينتيريست', url: 'https://pin.it/5CgGgQiS6' },
   ],
   en: [
-    { id: 'facebook', label: 'Facebook', url: 'https://www.facebook.com/share/19R2DseXxq/' },
-    { id: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/hneinehinteriorscarpentry/' },
-    { id: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@hneinehinteriorcarpentry' },
-    { id: 'pinterest', label: 'Pinterest', url: 'https://de.pinterest.com/hneinehlb/' },
+    { id: 'facebook', label: 'Facebook', url: 'https://www.facebook.com/share/1D51uw7DPR/' },
+    { id: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/hneinehinteriors' },
+    { id: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@hneinehinteriors' },
+    { id: 'pinterest', label: 'Pinterest', url: 'https://pin.it/5CgGgQiS6' },
   ],
 }
