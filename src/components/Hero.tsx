@@ -33,7 +33,7 @@ export default function Hero() {
   const text = usePick(heroText)
   const stats = usePick(heroStats)
   const isMobile = useIsMobile()
-  const heroImageSrc = isMobile ? '/hero_images/hero_image_mobile.jpg' : '/hero_images/hero_image_desktop.jpg'
+  const heroImageSrc = isMobile ? '/hero_images/hero_image_mobile.jpg' : '/hero_images/hero_image_desktop.png'
 
   return (
     <section id="top" aria-label={text.headline}>
