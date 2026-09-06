@@ -50,7 +50,7 @@ export default function Hero() {
           {isMobile ? (
             <div className="flex h-full flex-col items-center justify-end gap-8 px-6 pb-20 text-center">
               <Reveal>
-                <h1 className="font-display mx-auto max-w-3xl text-2xl leading-snug text-greige drop-shadow-md">
+                <h1 className="font-display mx-auto max-w-none whitespace-nowrap text-[clamp(1.15rem,5.4vw,1.9rem)] leading-snug text-greige drop-shadow-md">
                   {text.headline}
                 </h1>
               </Reveal>
