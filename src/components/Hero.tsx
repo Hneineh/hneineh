@@ -75,7 +75,7 @@ export default function Hero() {
               </Reveal>
             </div>
           ) : (
-            <div className="flex h-full flex-col items-center justify-end gap-10 px-6 pb-16 text-center">
+            <div className="flex h-full flex-col items-center justify-end gap-10 px-6 pb-40 text-center">
               <Reveal>
                 <h1 className="font-display max-w-4xl text-3xl leading-snug text-greige drop-shadow-md sm:text-5xl">
                   {text.headline}
