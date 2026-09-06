@@ -75,15 +75,15 @@ export default function Hero() {
               </Reveal>
             </div>
           ) : (
-            <div className="flex h-full flex-col items-center justify-center gap-25 px-6 text-center">
+            <div className="flex h-full flex-col items-center justify-end gap-10 px-6 pb-16 text-center">
               <Reveal>
-                <h1 className="font-display max-w-4xl text-3xl mt-10 leading-snug text-greige drop-shadow-md sm:text-5xl">
+                <h1 className="font-display max-w-4xl text-3xl leading-snug text-greige drop-shadow-md sm:text-5xl">
                   {text.headline}
                 </h1>
               </Reveal>
 
               <Reveal delayMs={150}>
-                <dl className="grid w-full max-w-3xl grid-cols-5 gap-x-4 mt-25 text-center">
+                <dl className="grid w-full max-w-3xl grid-cols-5 gap-x-4 text-center">
                   {stats.map((stat) => (
                     <Stat key={stat.id} stat={stat} shouldStart={appReady} />
                   ))}
